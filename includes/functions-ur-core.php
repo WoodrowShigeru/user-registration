@@ -657,6 +657,25 @@ function ur_get_general_settings( $id ) {
 			'required'    => true,
 		);
 	}
+
+	$payment_choice_fields = array( 'multiple_radio_item', 'multiple_checkbox_item' );
+
+	if ( in_array( $strip_id, $payment_choice_fields ) ) {
+		echo '<pre>' . print_r( $strip_id, true ) . '</pre>';
+		$payment_settings['options'] = array(
+			'type'        => $strip_id === 'multiple_radio_item' ? 'radio' : 'checkbox',
+			'label'       => __( 'Item Prices', 'user-registration' ),
+			'name'        => 'ur_general_setting[options]',
+			'placeholder' => '',
+			'required'    => true,
+			'options'     => array(
+				__( '0.00', 'user-registration' ),
+			),
+		);
+
+		$general_settings = ur_insert_after_helper( $general_settings, $payment_settings, 'field_name' );
+	}
+
 	return apply_filters( 'user_registration_field_options_general_settings', $general_settings, $id );
 }
 
@@ -664,11 +683,11 @@ function ur_get_general_settings( $id ) {
  * Insert in between the indexes in multidimensional array.
  *
  * @since  1.5.7
- * @param  array $items      An array of items
- * @param  array $new_items  New items to insert inbetween
+ * @param  array  $items      An array of items
+ * @param  array  $new_items  New items to insert inbetween
  * @param  string $after     Index to insert after
  *
- * @return array 			 Ordered array of items.
+ * @return array             Ordered array of items.
  */
 function ur_insert_after_helper( $items, $new_items, $after ) {
 
@@ -676,11 +695,11 @@ function ur_insert_after_helper( $items, $new_items, $after ) {
 	$position = array_search( $after, array_keys( $items ) ) + 1;
 
 	// Insert the new item.
-	$return_items = array_slice( $items, 0, $position, true );
+	$return_items  = array_slice( $items, 0, $position, true );
 	$return_items += $new_items;
 	$return_items += array_slice( $items, $position, count( $items ) - $position, true );
 
-    return $return_items;
+	return $return_items;
 }
 
 /**
