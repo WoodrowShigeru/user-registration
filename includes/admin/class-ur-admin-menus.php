@@ -203,7 +203,7 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 				/*
 				 * finally, redirect to the edit post screen for the new draft
 				 */
-				wp_redirect( admin_url( 'admin.php?page=add-new-registration&edit-registration=' . $new_post_id ) );
+				wp_redirect( admin_url( 'admin.php?page=ur-form-builder&edit-registration=' . $new_post_id ) );
 				exit;
 			}
 		}
@@ -281,7 +281,7 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 		public function registration_page_init() {
 			global $registration_table_list;
 
-			if ( ! isset( $_GET['add-new-registration'] ) ) { // WPCS: input var okay, CSRF ok.
+			if ( ! isset( $_GET['ur-form-builder'] ) ) { // WPCS: input var okay, CSRF ok.
 				$registration_table_list = new UR_Admin_Registrations_Table_List();
 
 				// Add screen option.
@@ -338,7 +338,7 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 				__( 'Add New', 'user-registration' ),
 				__( 'Add New', 'user-registration' ),
 				'manage_user_registration',
-				'add-new-registration',
+				'ur-form-builder',
 				array(
 					$this,
 					'add_registration_page',
@@ -384,7 +384,7 @@ if ( ! class_exists( 'UR_Admin_Menus', false ) ) :
 			?>
 			<div class="wrap">
 				<h1 class="wp-heading-inline"><?php esc_html_e( 'User Registration', 'user-registration' ); ?></h1>
-				<a href="<?php echo esc_url( admin_url( 'admin.php?page=add-new-registration' ) ); ?>" class="page-title-action"><?php esc_html_e( 'Add New', 'user-registration' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=ur-form-builder' ) ); ?>" class="page-title-action"><?php esc_html_e( 'Add New', 'user-registration' ); ?></a>
 				<hr class="wp-header-end">
 				<form id="registration-list" method="post">
 					<input type="hidden" name="page" value="user-registration" />

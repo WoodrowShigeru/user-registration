@@ -109,7 +109,7 @@
 	margin-top: 10px;
 }
 
-.user-registration_page_add-new-registration {
+.user-registration_page_ur-form-builder {
 
 	#post-body {
 		background-color: $white;
@@ -532,13 +532,13 @@
 
 @media only screen and (min-width: 769px) and (max-width: 1000px) {
 
-	.user-registration_page_add-new-registration #post-body-content {
+	.user-registration_page_ur-form-builder #post-body-content {
 		min-width: 0;
 	}
 }
 
 @media screen and (max-width: 782px) {
-	body.user-registration_page_add-new-registration {
+	body.user-registration_page_ur-form-builder {
 		min-width: 0 !important;
 	}
 }
@@ -1099,7 +1099,7 @@
 }
 
 @media screen and (max-width: 600px) {
-	.user-registration_page_add-new-registration .major-publishing-actions {
+	.user-registration_page_ur-form-builder .major-publishing-actions {
 		clear: both;
 		padding: 10px 0 19px;
 		line-height: 28px;

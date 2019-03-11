@@ -162,7 +162,7 @@ class UR_Admin_Notices {
 		global $wp_filter;
 
 		// Return on other than user registraion builder page.
-		if ( empty( $_REQUEST['page'] ) || 'add-new-registration' !== $_REQUEST['page'] ) {
+		if ( empty( $_REQUEST['page'] ) || 'ur-form-builder' !== $_REQUEST['page'] ) {
 			return;
 		}
 

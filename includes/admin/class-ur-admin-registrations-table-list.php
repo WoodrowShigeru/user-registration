@@ -84,7 +84,7 @@ class UR_Admin_Registrations_Table_List extends WP_List_Table {
 	 * @return string
 	 */
 	public function column_title( $registration ) {
-		$edit_link        = admin_url( 'admin.php?page=add-new-registration&amp;edit-registration=' . $registration->ID );
+		$edit_link        = admin_url( 'admin.php?page=ur-form-builder&amp;edit-registration=' . $registration->ID );
 		$title            = _draft_or_post_title( $registration->ID );
 		$post_type_object = get_post_type_object( 'user_registration' );
 		$post_status      = $registration->post_status;

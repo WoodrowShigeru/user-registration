@@ -141,14 +141,17 @@ class UR_Admin_Assets {
 
 		wp_register_script( 'flatpickr', UR()->plugin_url() . '/assets/js/flatpickr/flatpickr.min.js', array( 'jquery' ), '1.17.0' );
 		wp_register_script( 'ur-my-account', UR()->plugin_url() . '/assets/js/frontend/my-account' . $suffix . '.js', array( 'jquery' ), UR_VERSION );
-		wp_localize_script( 'ur-my-account', 'ur_my_account_params', array(
-				'upload_image' 		=> __( 'Upload Profile Picture', 'user-registration' ),
-				'select_image' 		=> __( 'Select Image', 'user-registration' ),
-				'current_user_can'	=>	current_user_can( 'edit_others_posts' )
+		wp_localize_script(
+			'ur-my-account',
+			'ur_my_account_params',
+			array(
+				'upload_image'     => __( 'Upload Profile Picture', 'user-registration' ),
+				'select_image'     => __( 'Select Image', 'user-registration' ),
+				'current_user_can' => current_user_can( 'edit_others_posts' ),
 			)
 		);
 
-		if ( 'user-registration_page_add-new-registration' === $screen_id ) {
+		if ( 'user-registration_page_ur-form-builder' === $screen_id ) {
 			wp_enqueue_script( 'ur-copy', UR()->plugin_url() . '/assets/js/admin/ur-copy' . $suffix . '.js', 'jquery' );
 		}
 
@@ -214,7 +217,7 @@ class UR_Admin_Assets {
 				'active_grid'                    => UR_Config::$default_active_grid,
 				'is_edit_form'                   => isset( $_GET['edit-registration'] ) ? true : false,
 				'post_id'                        => isset( $_GET['edit-registration'] ) ? absint( $_GET['edit-registration'] ) : 0,
-				'admin_url'                      => admin_url( 'admin.php?page=add-new-registration&edit-registration=' ),
+				'admin_url'                      => admin_url( 'admin.php?page=ur-form-builder&edit-registration=' ),
 				'form_required_fields'           => ur_get_required_fields(),
 				'form_one_time_draggable_fields' => ur_get_one_time_draggable_fields(),
 				'i18n_admin'                     => self::get_i18n_admin_data(),
